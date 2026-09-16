@@ -1,7 +1,5 @@
 package com.roulette.client;
 
-import java.util.function.Supplier;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -56,28 +54,28 @@ public class RouletteScreen extends AbstractContainerScreen<RouletteMenu> {
 
 		for (int i = 0; i < 3; i++) {
 			final int action = i;
-			this.pickButtons[i] = this.addRenderableWidget(new Button.Plain(
+			this.pickButtons[i] = this.addRenderableWidget(new RouletteButton(
 					this.leftPos + 6, this.topPos + 26 + i * 24, 32, 20,
 					Component.literal(PICK_LABELS[i]).withStyle(RouletteRules.COLOR_FORMATS[i]),
-					button -> sendAction(action), Supplier::get));
+					button -> sendAction(action)));
 		}
 		this.pickButtons[RouletteRules.GREEN].setTooltip(Tooltip.create(Component.literal("Rarer, but prizes jump 2 tiers")));
 
-		this.spinButton = this.addRenderableWidget(new Button.Plain(
+		this.spinButton = this.addRenderableWidget(new RouletteButton(
 				this.leftPos + 139, this.topPos + 54, 32, 20,
 				Component.literal("SPIN").withStyle(ChatFormatting.GREEN, ChatFormatting.BOLD),
-				button -> sendAction(RouletteMenu.ACTION_SPIN), Supplier::get));
+				button -> sendAction(RouletteMenu.ACTION_SPIN)));
 
-		this.inventoryTab = this.addRenderableWidget(new Button.Plain(
+		this.inventoryTab = this.addRenderableWidget(new RouletteButton(
 				this.leftPos + InventoryTabs.INVENTORY_TAB_X, this.topPos - InventoryTabs.TAB_HEIGHT,
 				InventoryTabs.TAB_WIDTH, InventoryTabs.TAB_HEIGHT, Component.empty(),
-				button -> backToInventory(), Supplier::get));
+				button -> backToInventory()));
 		this.inventoryTab.setTooltip(Tooltip.create(Component.literal("Inventory")));
 
-		this.rouletteTab = this.addRenderableWidget(new Button.Plain(
+		this.rouletteTab = this.addRenderableWidget(new RouletteButton(
 				this.leftPos + InventoryTabs.ROULETTE_TAB_X, this.topPos - InventoryTabs.TAB_HEIGHT,
 				InventoryTabs.TAB_WIDTH, InventoryTabs.TAB_HEIGHT, Component.empty(),
-				button -> { }, Supplier::get));
+				button -> { }));
 		this.rouletteTab.active = false;
 
 		this.lastOutcome = this.menu.outcome();

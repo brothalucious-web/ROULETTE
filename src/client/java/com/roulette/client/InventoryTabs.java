@@ -1,7 +1,5 @@
 package com.roulette.client;
 
-import java.util.function.Supplier;
-
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
@@ -43,10 +41,10 @@ public final class InventoryTabs {
 		ItemStack inventoryIcon = new ItemStack(Items.CHEST);
 		ItemStack rouletteIcon = new ItemStack(Items.CLOCK);
 
-		Button inventoryTab = new Button.Plain(0, 0, TAB_WIDTH, TAB_HEIGHT, Component.empty(), button -> { }, Supplier::get);
+		Button inventoryTab = new RouletteButton(0, 0, TAB_WIDTH, TAB_HEIGHT, Component.empty(), button -> { });
 		inventoryTab.active = false;
-		Button rouletteTab = new Button.Plain(0, 0, TAB_WIDTH, TAB_HEIGHT, Component.empty(),
-				button -> ClientPlayNetworking.send(OpenRoulettePayload.INSTANCE), Supplier::get);
+		Button rouletteTab = new RouletteButton(0, 0, TAB_WIDTH, TAB_HEIGHT, Component.empty(),
+				button -> ClientPlayNetworking.send(OpenRoulettePayload.INSTANCE));
 		rouletteTab.setTooltip(Tooltip.create(Component.literal("Roulette")));
 
 		if (!creative) {
