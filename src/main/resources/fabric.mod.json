@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "roulette",
+	"version": "${version}",
+	"name": "Roulette Wheel",
+	"description": "Adds a Roulette tab to your inventory. Bet any item, pick a color, spin, and win prize loot.",
+	"authors": ["You"],
+	"license": "CC0-1.0",
+	"icon": "assets/roulette/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.roulette.RouletteMod"],
+		"client": ["com.roulette.client.RouletteClient"]
+	},
+	"mixins": [
+		{
+			"config": "roulette.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
