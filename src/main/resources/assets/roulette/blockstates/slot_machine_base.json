@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "roulette:block/slot_machine_base"
+    },
+    "facing=east": {
+      "model": "roulette:block/slot_machine_base",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "roulette:block/slot_machine_base",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "roulette:block/slot_machine_base",
+      "y": 270
+    }
+  }
+}
